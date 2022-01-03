@@ -1,5 +1,22 @@
 <h1><b> Welcome to the private-events ! </b></h1>
 
+<div style="text-align: center;">
+  <% if user_signed_in? %>
+    <h2>
+      <a href="<%= new_event_url %>">New Event</a>
+    </h2>
+    <h2>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    </h2>
+  <% else %>
+    <h2>
+      <%= link_to "Sign In", new_user_session_path %>
+    </h2>
+  <% end %>
+</div>
+
+
 <% @events.each do |event| %>
-  <h2>there will be an event here</h2>
+  <h2><%= link_to event.name, event %></h2>
+  <h3><%= event.event_date %></h3><br /> 
 <% end %>
