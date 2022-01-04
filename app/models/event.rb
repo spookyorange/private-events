@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   belongs_to :creator, class_name: "User"
-  has_and_belongs_to_many :attendees, foreign_key: "attendee_id", class_name: "User"
 
+  has_many :attended_event_attendees, foreign_key: "attendee_id"
+  has_many :attendees, through: :attended_event_attendees
 end

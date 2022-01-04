@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_150832) do
+ActiveRecord::Schema.define(version: 2022_01_04_131633) do
 
-  create_table "attended_events_attendees", id: false, force: :cascade do |t|
+  create_table "attended_event_attendees", id: false, force: :cascade do |t|
     t.integer "attendee_id"
     t.integer "attended_event_id"
-    t.index ["attended_event_id"], name: "index_attended_events_attendees_on_attended_event_id"
-    t.index ["attendee_id"], name: "index_attended_events_attendees_on_attendee_id"
+    t.index ["attended_event_id"], name: "index_attended_event_attendees_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_attended_event_attendees_on_attendee_id"
   end
 
   create_table "events", force: :cascade do |t|
