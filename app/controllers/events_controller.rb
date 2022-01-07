@@ -22,7 +22,29 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
-  
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(build_params)
+      redirect_to @event
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    AttendedEventAttendee.where('attended_event_id = ?', @event.id).delete_all
+    @event.destroy
+
+    redirect_to :root
+  end
+
   private
 
   def build_params

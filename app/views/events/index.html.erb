@@ -8,6 +8,9 @@
     <h2>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     </h2>
+    <h2>
+      <%= link_to "Profile", current_user %>
+    </h2>
   <% else %>
     <h2>
       <%= link_to "Sign In", new_user_session_path %>
@@ -15,8 +18,14 @@
   <% end %>
 </div>
 
+<h2>Events from past</h2>
+<% Event.past.each do |event| %>
+  <h2><%= link_to event.name, event %></h2>
+  <h3><%= event.event_date %></h3><br /> 
+<% end %>
 
-<% @events.each do |event| %>
+<h2>Events in future</h2>
+<% Event.future.each do |event| %>
   <h2><%= link_to event.name, event %></h2>
   <h3><%= event.event_date %></h3><br /> 
 <% end %>
