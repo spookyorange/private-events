@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :events
-  resources :attended_event_attendees, only: [:show, :new, :create, :delete]
+  resources :attended_event_attendees
 end

@@ -19,7 +19,10 @@
   <div>
     <p>
     You have attended
-    </p>
+    </p><br />
+    <%= link_to "delete attendance", attended_event_attendee_path(@event.id),
+                                      method: :delete,
+                                      data: {confirm: "sure ?"} %>
   </div>
 <% else %>
   <div>

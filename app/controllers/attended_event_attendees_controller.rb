@@ -15,6 +15,13 @@ class AttendedEventAttendeesController < ApplicationController
     end
   end
 
+  def destroy
+    @attendance = AttendedEventAttendee.where("attendee_id = ? AND attended_event_id = ?", current_user.id, params[:id])
+    @attendance.delete_all
+
+    redirect_to Event.find(params[:id])
+  end
+
   private
 
   def attendation_params
